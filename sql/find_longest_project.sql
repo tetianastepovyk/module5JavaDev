@@ -1,0 +1,8 @@
+--Завдання №5 - знайти проєкт з найбільшою тривалістю
+SELECT ID AS NAME, DATEDIFF(MONTH, START_DATE, FINISH_DATE) AS MONTH_COUNT
+FROM project
+GROUP BY ID
+HAVING MONTH_COUNT = (
+    SELECT MAX(DATEDIFF(MONTH, START_DATE, FINISH_DATE))
+    FROM project
+);
